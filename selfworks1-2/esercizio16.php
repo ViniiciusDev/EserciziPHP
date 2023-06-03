@@ -5,13 +5,21 @@
 */
 
 $corsi = [
-    /* 'PHP',
+    'PHP',
     'Laravel',
     'Javascript',
     'CSS',
-    'HTML' */
+    'HTML'
 ];
 
-if ($corsi != true) {
-        echo 'Nessun corso disponibile';
+$corsi = []; // Tipo falsy
+
+if($corsi)  {
+    foreach ($corsi as $corso) {
+        echo "$corso\n";
+    }
+} else {
+    echo 'Nessun corso disponibile!!';
 }
+
+

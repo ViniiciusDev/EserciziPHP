@@ -18,9 +18,9 @@ $numbers = [
 ];
 
 foreach ($numbers as $number) {
-    if ($number % 2)   {
-        echo $number .' Dispari' . "\n";
+    if ($number % 2 == 0)   {
+        echo $number .' Pari' . "\n";
     } else {
-        echo $number . ' Pari' . "\n";
+        echo $number . ' Dispari' . "\n";
     }
 }
