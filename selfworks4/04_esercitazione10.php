@@ -61,6 +61,11 @@ class Student
             echo $corsi . "\n";
         }
     }
+    // Metodo statico per stampare $students
+    public static function counterStudents()
+    {
+        echo self::$students++;
+    }
 
 }
 
@@ -69,5 +74,6 @@ $studente2 = new Student('Massimiliano', 'massimiliano@example.com', 28);
 $studente3 = new Student('Francesco', 'francesco@example.com', 52);
 $studente4 = new Student('Rocco', 'rocco@example.com', 12);
 $studente5 = new Student('Alberto', 'alberto@example.com', 22);
+$studente5 = new Student('Antonio', 'antonio@example.com', 28);
 
-echo Student::$students;
+echo Student::counterStudents();
