@@ -11,16 +11,20 @@ $corsi = [
     'CSS',
     'HTML'
 ];
-$search = 'Laravel';
+$search = 'HTML';
 
 function searching($corsi, $search) {
+    $found = false; // false se l'elemento non e` stato trovato, true se l'elemento e` stato trovato.
     foreach ($corsi as $key => $corso) {
         if($corso === $search)  {
             echo 'Trovato alla posizione:' . $key . "\n";
+            $found = true;
             break;
-        } else {
-            echo 'Elemento non trovato' . "\n";
         }
+    }
+
+    if (! $found)   {
+        echo 'Elemento non trovato!';
     }
 }
 
