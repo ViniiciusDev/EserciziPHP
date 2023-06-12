@@ -10,4 +10,35 @@
         - la proprietà age del terzo oggetto.    
 */
 
+class Student
+{
+    // Proprietá(variabili)
+    public $students = [];
 
+    // Metodo per aggiungere studenti
+    public function addStudents($name, $email, $age)
+    {
+        $this -> students["students"] = [
+            "Name" => $name,
+            "Email" => $email,
+            "Age" => $age,
+        ];
+    }
+}
+
+$students1 = new Student;
+$students2 = new Student;
+$students3 = new Student;
+
+
+$students1 -> addStudents('Vinicius', 'vinicius@example.com', 24);
+$students2 -> addStudents('Massimiliano', 'massimiliano@example.com', 28);
+$students3 -> addStudents('Francesco', 'francesco@example.com', 32);
+
+echo $students1 -> students["students"]["Name"];
+echo "\n";
+echo $students2 -> students["students"]["Name"];
+echo "\n";
+echo $students2 -> students["students"]["Email"];
+echo "\n";
+echo $students3 -> students["students"]["Age"];

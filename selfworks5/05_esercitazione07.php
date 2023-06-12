@@ -1,7 +1,8 @@
 <?php
 /* 
-    TODO: Esercizio 6
-    Modificare la visibilità della proprietà "fatturato annuo" in private. In seguito scrivere un opportuno metodo per poter stampare questo dato una volta creato l'oggetto.
+    TODO: Esercizio 7
+    Vogliamo che, richiamando il metodo appena scritto all'esercizio 6 da un oggetto di tipo GrandeDistribuzione, non venga visualizzato il valore, ma un messaggio: Dato attualmente non disponibile.
+    Suggerimento: override del metodo.
 */
 
 // * Class Parent 
@@ -74,15 +75,19 @@ class DepartmentStore extends Client    {
         ];
     }
 
+    public function getAnnualSales()
+    {
+        echo "Dato attualmente non disponibile";
+    }
+
 }
 
 $store1 = new Store('Central Store', 'Milano', 250000, 'Pino', '123456989', 'questo@example.com');
-
 $departmentStore = new DepartmentStore('Center Cell', 'Roma', 200000, 'Alberto', 123456789, 'alberto@example.com');
 
 $departmentStore -> addStoreLocation('Napoli', 'storeNapoli@example.com', 132456789, 150000);
 $departmentStore -> addStoreLocation('Catania', 'storeCatania@example.com', 142356789, 250000);
 
+$departmentStore -> getAnnualSales();
+echo "\n";
 $store1 -> getAnnualSales();
-
-/* var_dump($store1); */

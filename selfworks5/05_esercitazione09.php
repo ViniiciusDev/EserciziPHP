@@ -1,7 +1,7 @@
 <?php
 /* 
-    TODO: Esercizio 6
-    Modificare la visibilità della proprietà "fatturato annuo" in private. In seguito scrivere un opportuno metodo per poter stampare questo dato una volta creato l'oggetto.
+    TODO:  Esercizio 9 - Extra
+    Modificare il metodo all'esercizio 7 in modo che sommi tutti i fatturati presenti nell'elenco delle sedi e ne stampi il risultato in questo modo: "Il fatturato totale di nome_della_grande_distribuzione è valore_del_fatturato". 
 */
 
 // * Class Parent 
@@ -54,6 +54,7 @@ class DepartmentStore extends Client    {
 
     // proprietá
     public $storeLocation = [];
+    public $totalSales;
     const TYPE = "DepartmentStore";
 
     // Metodo Costruttore
@@ -70,19 +71,27 @@ class DepartmentStore extends Client    {
             "City" => $newStoreLocation, 
             "Email" => $emailLocation,
             "Phone" => $phoneLocation,
-            "Annual Sales" => $annualSalesLocation
+            "AnnualSales" => $annualSalesLocation
         ];
+    }
+
+    public function getAnnualSales()
+    {
+        foreach ($this -> storeLocation as $AnnualSales => $allSales) {
+            $this -> totalSales += $allSales["AnnualSales"];
+        }
+        return $this -> totalSales;
     }
 
 }
 
 $store1 = new Store('Central Store', 'Milano', 250000, 'Pino', '123456989', 'questo@example.com');
-
 $departmentStore = new DepartmentStore('Center Cell', 'Roma', 200000, 'Alberto', 123456789, 'alberto@example.com');
 
 $departmentStore -> addStoreLocation('Napoli', 'storeNapoli@example.com', 132456789, 150000);
 $departmentStore -> addStoreLocation('Catania', 'storeCatania@example.com', 142356789, 250000);
+$departmentStore -> addStoreLocation('Crotone', 'storeCrotone@example.com', 142356789, 120000);
 
-$store1 -> getAnnualSales();
+$departmentStore -> getAnnualSales();
 
-/* var_dump($store1); */
+echo "Il fatturato totale di " . $departmentStore -> name . " è di $" . $departmentStore -> totalSales;

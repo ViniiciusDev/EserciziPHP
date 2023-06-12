@@ -1,7 +1,10 @@
 <?php
 /* 
-    TODO: Esercizio 6
-    Modificare la visibilità della proprietà "fatturato annuo" in private. In seguito scrivere un opportuno metodo per poter stampare questo dato una volta creato l'oggetto.
+    TODO: Esercizio 10 - Extra
+    Creare un metodo in GrandeDistribuzione che rimuova una sede in base all'indice passato:
+
+        - Se l'indice è presente nell'array, il metodo rimuove l'elemento e restituisce la stringa "deleted";
+        - Se l'indice non presente, restituisce la stringa "not_found".
 */
 
 // * Class Parent 
@@ -54,6 +57,7 @@ class DepartmentStore extends Client    {
 
     // proprietá
     public $storeLocation = [];
+    public $totalSales;
     const TYPE = "DepartmentStore";
 
     // Metodo Costruttore
@@ -70,19 +74,42 @@ class DepartmentStore extends Client    {
             "City" => $newStoreLocation, 
             "Email" => $emailLocation,
             "Phone" => $phoneLocation,
-            "Annual Sales" => $annualSalesLocation
+            "AnnualSales" => $annualSalesLocation
         ];
+    }
+
+    // Metodo per sommare il fatturado di tutti i negozi. 
+    public function getAnnualSales()
+    {
+        foreach ($this -> storeLocation as $AnnualSales => $allSales) {
+            $this -> totalSales += $allSales["AnnualSales"];
+        }
+        return $this -> totalSales;
+    }
+    
+    // Metodo per rimuovere una store.
+    public function removeStore($city)
+    {
+        if(array_key_exists($city, $this -> storeLocation)) {
+
+            unset($this -> storeLocation[$city]);
+            echo "deleted";
+        
+        } else {
+        
+            echo 'not_found';
+        
+        }
     }
 
 }
 
 $store1 = new Store('Central Store', 'Milano', 250000, 'Pino', '123456989', 'questo@example.com');
-
 $departmentStore = new DepartmentStore('Center Cell', 'Roma', 200000, 'Alberto', 123456789, 'alberto@example.com');
 
 $departmentStore -> addStoreLocation('Napoli', 'storeNapoli@example.com', 132456789, 150000);
 $departmentStore -> addStoreLocation('Catania', 'storeCatania@example.com', 142356789, 250000);
+$departmentStore -> addStoreLocation('Crotone', 'storeCrotone@example.com', 142356789, 120000);
 
-$store1 -> getAnnualSales();
-
-/* var_dump($store1); */
+$departmentStore -> removeStore('Brasile');
+/* var_dump($departmentStore); */

@@ -62,7 +62,6 @@ class DepartmentStore extends Client    {
     // Metodo per Aggiungere Store Location
     public function addStoreLocation($newStoreLocation, $emailLocation, $phoneLocation, $annualSalesLocation)
     {
-        $this -> storeLocation[] = $newStoreLocation;
         $this -> storeLocation[$newStoreLocation] = [
             "City" => $newStoreLocation, 
             "Email" => $emailLocation,
